@@ -13,7 +13,7 @@ export class Event {
   constructor(event: dbEvent) {
     this.id = event.id;
     this.event_type = (<any>eventType)[event.event_type];
-    this.timestamp = event.timestamp;
+    this.timestamp = new Date(event.timestamp);
     this.caregiver_id = event.caregiver_id;
     this.care_recipient_id = event.care_recipient_id;
     this.mood = event.mood;
