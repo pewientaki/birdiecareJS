@@ -1,12 +1,22 @@
-import { createStore, combineReducers } from 'redux';
-import { counterReducer } from './reducers/index';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { counterReducer, dataReducer } from './reducers/index';
+import createSagaMiddleware from 'redux-saga';
+import { mySaga } from './saga/sagas'
 
-const allReducer = combineReducers({ counter: counterReducer })
+const allReducer = combineReducers({
+    counter: counterReducer,
+    data: dataReducer
+});
 
+const sagaMiddleware = createSagaMiddleware();
+// const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() || compose;
+
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export const store = createStore(
     allReducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+    composeEnhancers(applyMiddleware(sagaMiddleware))
+);
 
-//show store in the console
-// store.subsrcibe(() => console.log(store.getState()));
+sagaMiddleware.run(mySaga)

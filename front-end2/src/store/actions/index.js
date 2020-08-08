@@ -10,3 +10,16 @@ export const decrement = () => {
         type: 'INCREMENT'
     };
 };
+
+export const fetchData = (patientId) => {
+    return {
+        type: 'DATA_WEEKLY_REQUESTED',
+        payload: {patientId}
+    };
+};
+
+export const setCards = () => {
+    return {
+        type: 'SET_CARDS'
+    };
+};

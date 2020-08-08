@@ -1,4 +1,6 @@
-// import { initialNotes } from './initialState'
+import { initialData } from './initialState';
+
+import { getWeeklyData } from './../saga/sagas'
 
 
 // export const noteReducer = (state = initialNotes, action) => {
@@ -22,4 +24,18 @@ export const counterReducer = (state = 0, action) => {
             return state
     }
 };
+
+export const dataReducer = (state = initialData, action) => {
+    switch (action.type) {
+        case "DATA_WEEKLY_SUCCEEDED":
+            if (action.weekly)
+                state.data = action.weekly;
+            console.log("yalla")
+            return state;
+        case "SET_CARDS":
+            return state;
+        default:
+            return state;
+    }
+}
 
