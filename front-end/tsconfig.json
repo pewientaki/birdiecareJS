@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "strict": false,
     "baseUrl": ".",
     "paths": {
       "@App/*": [
@@ -26,7 +27,7 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": false

@@ -1,0 +1,1 @@
+export const dataRequest = (dispatch: Function) => () => dispatch({ type: 'DATA_REQUEST', allData: null });

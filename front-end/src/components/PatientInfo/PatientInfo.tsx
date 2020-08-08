@@ -7,36 +7,37 @@ import { faHeartbeat, faFrown, faUtensils, faCapsules, faTablets } from '@fortaw
 const PatientInfo = () => {
     return (
         <Container>
+
             <TableContainer >
                 <Table component={Paper}>
                     <TableHead>
                         <TableCell>Event</TableCell>
                         <TableCell>Note or description</TableCell>
-                        <TableCell>Caretaker ID</TableCell>
+                        <TableCell>Last updated:</TableCell>
                     </TableHead>
                     <TableRow>
                         <TableCell><FontAwesomeIcon icon={faHeartbeat} /> Health</TableCell>
-                        <TableCell>pizza margharita</TableCell>
-                        <TableCell>Helen</TableCell>
+                        <TableCell>"last general_observation"</TableCell>
+                        <TableCell>"date""</TableCell>
                     </TableRow>
                     <TableHead>
                         <TableCell><FontAwesomeIcon icon={faFrown} /> Mood</TableCell>
-                        <TableCell>Note or description</TableCell>
-                        <TableCell>Caretaker ID</TableCell>
+                        <TableCell>"last mood_observation"</TableCell>
+                        <TableCell>"date""</TableCell>
                     </TableHead>
                     <TableRow>
                         <TableCell><FontAwesomeIcon icon={faUtensils} /> Food</TableCell>
-                        <TableCell>pizza margharita</TableCell>
-                        <TableCell>Helen</TableCell>
+                        <TableCell>"food_intake and drink_intake"</TableCell>
+                        <TableCell>"date""</TableCell>
                     </TableRow>
                     <TableRow>
                         <TableCell><FontAwesomeIcon icon={faCapsules} /> Meds</TableCell>
-                        <TableCell>paracetamol</TableCell>
-                        <TableCell>Helen</TableCell>
+                        <TableCell>"meds_update"</TableCell>
+                        <TableCell>"date"</TableCell>
                     </TableRow>
                 </Table>
-            </TableContainer>
-        </Container>
+            </TableContainer >
+        </Container >
     );
 
 };
