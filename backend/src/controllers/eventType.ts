@@ -24,5 +24,7 @@ export enum eventType {
   concern_raised,
   regular_medication_partially_taken,
   catheter_observation,
-  toilet_visit_recorded
+  toilet_visit_recorded,
+  task_schedule_note,
+  task_definition_description
 }

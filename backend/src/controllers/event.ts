@@ -4,7 +4,7 @@ import { eventType } from "./eventType";
 export class Event {
   id: string;
   event_type: any;
-  timestamp: Date;
+  date: Date;
   caregiver_id: string;
   care_recipient_id: string;
   mood: string;
@@ -13,7 +13,7 @@ export class Event {
   constructor(event: dbEvent) {
     this.id = event.id;
     this.event_type = (<any>eventType)[event.event_type];
-    this.timestamp = new Date(event.timestamp);
+    this.date = new Date(event.timestamp);
     this.caregiver_id = event.caregiver_id;
     this.care_recipient_id = event.care_recipient_id;
     this.mood = event.mood;
