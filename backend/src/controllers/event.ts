@@ -9,6 +9,9 @@ export class Event {
   care_recipient_id: string;
   mood: string;
   payload: any;
+  task_request_note: string;
+  task_description: string;
+  note: string;
 
   constructor(event: dbEvent) {
     this.id = event.id;
@@ -18,5 +21,19 @@ export class Event {
     this.care_recipient_id = event.care_recipient_id;
     this.mood = event.mood;
     this.payload = JSON.parse(event.payload);
+    this.task_request_note = this.payload.task_schedule_note;
+    this.task_description = this.payload.task_definition_description;
+    if (this.payload.task_schedule_note)
+      this.note = this.payload.task_schedule_note;
+    else if (this.payload.task_description)
+      this.note = this.payload.task_description;
+    else if (this.payload.task_definition_description)
+      this.note = this.payload.task_definition_description;
+    else if (this.payload.note)
+      this.note = this.payload.note;
+    else if (this.task_request_note)
+      this.note = this.task_request_note;
+    else
+      this.note = 'Event of type "' + event.event_type.replace('_', ' ').replace('_', ' ').replace('_', ' ') + '" occured.'
   }
 }

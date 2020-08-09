@@ -1,6 +1,6 @@
 import * as express from "express";
 import { pingController } from "./controllers/ping";
-import { nutritionController, healthController, generalDataController, medsController, checksController } from "./controllers/nutrition";
+import { nutritionController, healthController, generalDataController, medsController, checksController } from "./controllers/routes";
 
 const app = express();
 
