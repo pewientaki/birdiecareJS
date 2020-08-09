@@ -1,11 +1,14 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import { counterReducer, dataReducer } from './reducers/index';
+import { nutritionReducer, healthReducer, medsReducer, tasksReducer, tableReducer } from './reducers/index';
 import createSagaMiddleware from 'redux-saga';
 import { mySaga } from './saga/sagas'
 
 const allReducer = combineReducers({
-    counter: counterReducer,
-    data: dataReducer
+    health: healthReducer,
+    nutrition: nutritionReducer,
+    meds: medsReducer,
+    tasks: tasksReducer,
+    table: tableReducer
 });
 
 const sagaMiddleware = createSagaMiddleware();

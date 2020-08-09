@@ -11,15 +11,37 @@ export const decrement = () => {
     };
 };
 
-export const fetchData = (patientId) => {
+export const fetchNutrition = (patientId) => {
     return {
-        type: 'DATA_WEEKLY_REQUESTED',
-        payload: {patientId}
+        type: 'NUTRITION_DATA_REQUESTED',
+        payload: { patientId }
     };
 };
 
-export const setCards = () => {
+export const fetchHealth = (patientId) => {
     return {
-        type: 'SET_CARDS'
+        type: 'HEALTH_DATA_REQUESTED',
+        payload: { patientId }
+    };
+};
+
+export const fetchMeds = (patientId) => {
+    return {
+        type: 'MEDS_DATA_REQUESTED',
+        payload: { patientId }
+    };
+};
+
+export const fetchTasks = (patientId) => {
+    return {
+        type: 'TASKS_DATA_REQUESTED',
+        payload: { patientId }
+    };
+};
+
+export const setTable = (tableData, title) => {
+    return {
+        type: 'TABLE_DATA_REQUESTED',
+        payload: { tableData, title }
     };
 };
