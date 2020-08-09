@@ -20,8 +20,8 @@ const getConnection = () => mysql.createConnection({
 });
 
 generalDataController.get('/careRecipients', async (_req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000')
-  const connection = getConnection()
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  const connection = getConnection();
   connection.connect();
 
   await connection.query("SELECT DISTINCT care_recipient_id FROM events", function (error: any, results: any[]) {
@@ -34,26 +34,11 @@ generalDataController.get('/careRecipients', async (_req, res) => {
   connection.end();
 });
 
-generalDataController.get('/all', async (_req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000')
-  const connection = getConnection()
-  connection.connect();
-
-  await connection.query("SELECT * FROM events", function (error: any, results: any) {
-    if (error) throw error;
-    res.status(200).json({
-      data: results
-    });
-  });
-
-  connection.end();
-});
-
 nutritionController.get('/nutrition/:id/:page?', async (req, res) => {
   let id = req.params.id;
 
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000')
-  const connection = getConnection()
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  const connection = getConnection();
   connection.connect();
 
   await connection.query("SELECT * FROM events", function (error: any, results: dbEvent[]) {
@@ -66,8 +51,8 @@ nutritionController.get('/nutrition/:id/:page?', async (req, res) => {
         || p.event_type == eventType.food_intake_observation
         || p.event_type == eventType.catheter_observation));
 
-    filteredEevents.sort((p1: Event, p2: Event) => p2.date.getTime() - p1.date.getTime())
-    let pagedEvents = getDatedPagedEvents(filteredEevents, req.params.page, 7)
+    filteredEevents.sort((p1: Event, p2: Event) => p2.date.getTime() - p1.date.getTime());
+    let pagedEvents = getDatedPagedEvents(filteredEevents, req.params.page, 7);
 
     res.status(200).json({
       data: pagedEvents
@@ -80,8 +65,8 @@ nutritionController.get('/nutrition/:id/:page?', async (req, res) => {
 medsController.get('/meds/:id/:page?', async (req, res) => {
   let id = req.params.id;
 
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000')
-  const connection = getConnection()
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  const connection = getConnection();
   connection.connect();
 
   await connection.query("SELECT * FROM events", function (error: any, results: dbEvent[]) {
@@ -96,8 +81,8 @@ medsController.get('/meds/:id/:page?', async (req, res) => {
         || p.event_type == eventType.regular_medication_maybe_taken
         || p.event_type.type == eventType.regular_medication_partially_taken));
 
-    filteredEevents.sort((p1: Event, p2: Event) => p2.date.getTime() - p1.date.getTime())
-    let pagedEvents = getDatedPagedEvents(filteredEevents, req.params.page, 7)
+    filteredEevents.sort((p1: Event, p2: Event) => p2.date.getTime() - p1.date.getTime());
+    let pagedEvents = getDatedPagedEvents(filteredEevents, req.params.page, 7);
 
     res.status(200).json({
       data: pagedEvents
@@ -110,8 +95,8 @@ medsController.get('/meds/:id/:page?', async (req, res) => {
 healthController.get('/health/:id/:page?', async (req, res) => {
   let id = req.params.id;
 
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000')
-  const connection = getConnection()
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  const connection = getConnection();
   connection.connect();
 
   await connection.query("SELECT * FROM events", function (error: any, results: dbEvent[]) {
@@ -125,8 +110,8 @@ healthController.get('/health/:id/:page?', async (req, res) => {
         || p.event_type == eventType.toilet_visit_recorded
         || p.event_type == eventType.concern_raised));
 
-    filteredEevents.sort((p1: Event, p2: Event) => p2.date.getTime() - p1.date.getTime())
-    let pagedEvents = getDatedPagedEvents(filteredEevents, req.params.page, 7)
+    filteredEevents.sort((p1: Event, p2: Event) => p2.date.getTime() - p1.date.getTime());
+    let pagedEvents = getDatedPagedEvents(filteredEevents, req.params.page, 7);
 
     res.status(200).json({
       data: pagedEvents
@@ -139,8 +124,8 @@ healthController.get('/health/:id/:page?', async (req, res) => {
 checksController.get('/checks/:id/:page?', async (req, res) => {
   let id = req.params.id;
 
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000')
-  const connection = getConnection()
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  const connection = getConnection();
   connection.connect();
 
   await connection.query("SELECT * FROM events", function (error: any, results: dbEvent[]) {
@@ -158,8 +143,8 @@ checksController.get('/checks/:id/:page?', async (req, res) => {
         || p.event_type == eventType.task_completed
         || p.event_type == eventType.task_definition_description));
 
-    filteredEevents.sort((p1: Event, p2: Event) => p2.date.getTime() - p1.date.getTime())
-    let pagedEvents = getDatedPagedEvents(filteredEevents, req.params.page, 7)
+    filteredEevents.sort((p1: Event, p2: Event) => p2.date.getTime() - p1.date.getTime());
+    let pagedEvents = getDatedPagedEvents(filteredEevents, req.params.page, 7);
 
     res.status(200).json({
       data: pagedEvents

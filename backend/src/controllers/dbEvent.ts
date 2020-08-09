@@ -7,4 +7,6 @@ export interface dbEvent {
   care_recipient_id: string;
   mood: string;
   payload: string;
-}
+  task_schedule_note: string;
+  task_definition_description: string;
+};

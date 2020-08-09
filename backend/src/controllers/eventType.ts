@@ -27,4 +27,4 @@ export enum eventType {
   toilet_visit_recorded,
   task_schedule_note,
   task_definition_description
-}
+};
