@@ -15,7 +15,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "dev": "nodemon",
-    "start": "npm run dev"
+    "start": "npm run dev",
+    "heroku-postbuild": "cd client && npm install && npm react build"
   },
   "dependencies": {
     "express": "^4.16.4",
