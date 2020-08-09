@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  display: flex;
+position: relative;
+  display: grid;
   flex-direction: column;
   min-width: 0;
   max-width: 250px;
@@ -29,7 +30,7 @@ export const Body = styled.div`
 export const Header = styled.div`
   width: 100%;
   height: 3rem;
-  background-color: pink;
+  background-color: #fcb9b2;
   font-size: 2.25rem;
 `;
 
@@ -44,6 +45,17 @@ export const Text = styled.p`
   color: #6c757d;
 `;
 
+export const Date = styled.p`
+  line-height: 25px;
+  color: #6c757d;
+  display: inline-block;
+  align-self: flex-end;
+  position: absolute;
+  top: 70%;
+  align-items: flex-start;
+  
+`;
+
 export const Image = styled.img`
   width: 100%;
 `;
@@ -53,7 +65,7 @@ export const Button = styled.button`
   margin-top: auto;
   width: 100%;
   color: #fff;
-  background-color: #28a745;
+  background-color: #8e7dbe;
   border-color: #28a745;
   display: block;
   font-weight: bold;

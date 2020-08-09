@@ -8,12 +8,10 @@ const allReducer = combineReducers({
     nutrition: nutritionReducer,
     meds: medsReducer,
     tasks: tasksReducer,
-    table: tableReducer
+    table: tableReducer,
 });
 
 const sagaMiddleware = createSagaMiddleware();
-// const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() || compose;
-
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

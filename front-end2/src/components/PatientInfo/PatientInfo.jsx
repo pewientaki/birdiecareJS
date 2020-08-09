@@ -3,12 +3,27 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Card, TableInfo, Nav } from '../index';
 import { Container } from '../styles';
 import { faHeartbeat, faCapsules, faUtensils, faTasks } from '@fortawesome/free-solid-svg-icons';
-import { fetchNutrition, fetchHealth, fetchMeds, fetchTasks, setTable } from '../../store/actions/index'
-
+import { fetchNutrition, fetchHealth, fetchMeds, fetchTasks } from '../../store/actions/index';
+import { setTable } from '../../store/actions';
 
 
 const PatientInfo = () => {
     const dispatch = useDispatch();
+
+    const [health, setHealth] = useState({
+        data: []
+    });
+    const [meds, setMeds] = useState({
+        data: []
+    });
+
+    const [nutrition, setNutrition] = useState({
+        data: []
+    });
+
+    const [tasks, setTasks] = useState({
+        data: []
+    });
 
     const [patient, setPatient] = useState('df50cac5-293c-490d-a06c-ee26796f850d');
 
@@ -28,91 +43,49 @@ const PatientInfo = () => {
         return state.tasks;
     });
 
-
-    let title='health'
     useEffect(() => {
-        dispatch(fetchNutrition("df50cac5-293c-490d-a06c-ee26796f850d"))
-        dispatch(fetchHealth("df50cac5-293c-490d-a06c-ee26796f850d"))
-        dispatch(fetchMeds("df50cac5-293c-490d-a06c-ee26796f850d"))
-        dispatch(fetchTasks("df50cac5-293c-490d-a06c-ee26796f850d"))
-        dispatch(setTable(healthState, title='health'))
-            
+        dispatch(fetchNutrition(patient));
+        dispatch(fetchHealth(patient));
+        dispatch(fetchMeds(patient));
+        dispatch(fetchTasks(patient));
         setTimeout(setCards(), 4000);
-        
-    },[])
-    
+
+    }, [patient]);
+
     const setCards = () => {
         setHealth(healthState);
         setMeds(medsState);
         setNutrition(nutritionState);
-        setTasks(tasksState)
-        setTable(healthState)
-        cardsData();
-    }
-
-    const cardsData = () => {
-        console.log(health, 'health')
-        console.log(nutrition, 'nutrition')
-        console.log(meds, 'meds')
-        console.log(tasks, 'tasks')
+        setTasks(tasksState);
     };
 
-    const [health, setHealth] = useState({
-        data: [{
-            icon: faHeartbeat,
-            title: 'Health',
-            notes: 'Not bad at all',
-            date: '2020-07-25',
-            caregiver_id: 'Helen'
-        }]
-    });
-    const [meds, setMeds] = useState({
-        data: [{
-            icon: faCapsules,
-            title: 'Meds',
-            notes: 'Paracetamol, aspirin',
-            date: '2020-07-25',
-            caregiver_id: 'Adeleine'
-        }]
-    });
-
-     const [nutrition, setNutrition] = useState({
-        data: [{
-            icon: faUtensils,
-            title: 'Nutrition',
-            notes: 'Banana, porridge, coffee',
-            date: '2020-07-25',
-            caregiver_id: 'Tom'
-        }]
-    }); 
-
-    const [tasks, setTasks] = useState({
-        data: [{
-            icon: faTasks,
-            title: 'Checks',
-            notes: 'Sheets and bin changed',
-            date: '2020-01-05',
-            caregiver_id: 'Margharet'
-        }]
-    });
-
-    console.log(health)
     return (
         <div>
-            {/* <button onClick={() => dispatch(fetchNutrition("df50cac5-293c-490d-a06c-ee26796f850d"))}>call nutrition</button>
-            <button onClick={() => dispatch(fetchHealth("df50cac5-293c-490d-a06c-ee26796f850d"))}>call health data</button>
-            <button onClick={() => dispatch(fetchMeds("df50cac5-293c-490d-a06c-ee26796f850d"))}>call meds data</button>
-            <button onClick={() => dispatch(fetchTasks("df50cac5-293c-490d-a06c-ee26796f850d"))}>call tasks data</button> */}
-            <button onClick={() => setCards()}>get data</button>
             <Nav />
+            <Container>
+                <form >
+                    <label>
+                        Choose patient to change info:
+                    </label>
+                    <select onChange={e => {
+                        setPatient(e.currentTarget.options[e.currentTarget.selectedIndex].value);
+                        dispatch(setTable([{ info: health }], 'Health'));
+                    }}>
+                        <option value="df50cac5-293c-490d-a06c-ee26796f850d">df50cac5-293c-490d-a06c-ee26796f850d</option>
+                        <option value="e3e2bff8-d318-4760-beea-841a75f00227">e3e2bff8-d318-4760-beea-841a75f00227</option>
+                        <option value="ad3512a6-91b1-4d7d-a005-6f8764dd0111">ad3512a6-91b1-4d7d-a005-6f8764dd0111</option>
+                    </select>
+                </form>
+            </Container>
             <Container>
                 <Card data={health} icon={faHeartbeat} title='Health' />
                 <Card data={meds} icon={faCapsules} title='Meds' />
                 <Card data={nutrition} icon={faUtensils} title='Nutrition' />
                 <Card data={tasks} icon={faTasks} title='Checks' />
             </Container>
-            <TableInfo />
-
+            <Container>
+               <TableInfo />
+            </Container>
         </div>
     );
 };
