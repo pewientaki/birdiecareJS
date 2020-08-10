@@ -20,6 +20,7 @@ const getConnection = () => mysql.createConnection({
 });
 
 generalDataController.get('/careRecipients', async (_req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://birdiecare-web.herokuapp.com');
   const connection = getConnection();
   connection.connect();
 
@@ -34,6 +35,7 @@ generalDataController.get('/careRecipients', async (_req, res) => {
 });
 
 nutritionController.get('/nutrition/:id/:page?', async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://birdiecare-web.herokuapp.com');
   let id = req.params.id;
 
   const connection = getConnection();
@@ -61,6 +63,7 @@ nutritionController.get('/nutrition/:id/:page?', async (req, res) => {
 });
 
 medsController.get('/meds/:id/:page?', async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://birdiecare-web.herokuapp.com');
   let id = req.params.id;
 
   const connection = getConnection();
@@ -90,6 +93,7 @@ medsController.get('/meds/:id/:page?', async (req, res) => {
 });
 
 healthController.get('/health/:id/:page?', async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://birdiecare-web.herokuapp.com');
   let id = req.params.id;
 
   const connection = getConnection();
@@ -118,6 +122,7 @@ healthController.get('/health/:id/:page?', async (req, res) => {
 });
 
 checksController.get('/checks/:id/:page?', async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://birdiecare-web.herokuapp.com');
   let id = req.params.id;
 
   const connection = getConnection();
