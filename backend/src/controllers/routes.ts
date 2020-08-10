@@ -20,7 +20,7 @@ const getConnection = () => mysql.createConnection({
 });
 
 generalDataController.get('/careRecipients', async (_req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
   const connection = getConnection();
   connection.connect();
 
@@ -37,7 +37,7 @@ generalDataController.get('/careRecipients', async (_req, res) => {
 nutritionController.get('/nutrition/:id/:page?', async (req, res) => {
   let id = req.params.id;
 
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
   const connection = getConnection();
   connection.connect();
 
@@ -65,7 +65,7 @@ nutritionController.get('/nutrition/:id/:page?', async (req, res) => {
 medsController.get('/meds/:id/:page?', async (req, res) => {
   let id = req.params.id;
 
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
   const connection = getConnection();
   connection.connect();
 
@@ -95,7 +95,7 @@ medsController.get('/meds/:id/:page?', async (req, res) => {
 healthController.get('/health/:id/:page?', async (req, res) => {
   let id = req.params.id;
 
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
   const connection = getConnection();
   connection.connect();
 
@@ -124,7 +124,7 @@ healthController.get('/health/:id/:page?', async (req, res) => {
 checksController.get('/checks/:id/:page?', async (req, res) => {
   let id = req.params.id;
 
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
   const connection = getConnection();
   connection.connect();
 
