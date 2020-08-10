@@ -9,4 +9,5 @@ width: 80%;
   flex-direction: block;
   margin-left: auto;
   margin-right: auto;
+  background-color: rgb(250, 250, 250);
 `;  
