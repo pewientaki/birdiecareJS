@@ -27,31 +27,21 @@ const PatientInfo = () => {
 
     const [patient, setPatient] = useState('df50cac5-293c-490d-a06c-ee26796f850d');
 
-    const healthState = useSelector(state => {
-        return state.health;
-    });
-
-    const medsState = useSelector(state => {
-        return state.meds;
-    });
-
-    const nutritionState = useSelector(state => {
-        return state.nutrition;
-    });
-
-    const tasksState = useSelector(state => {
-        return state.tasks;
-    });
+    const healthState = useSelector(state => state.health);
+    const medsState = useSelector(state => state.meds);
+    const nutritionState = useSelector(state => state.nutrition);
+    const tasksState = useSelector(state => state.tasks);
 
     useEffect(() => {
         dispatch(fetchNutrition(patient));
         dispatch(fetchHealth(patient));
         dispatch(fetchMeds(patient));
         dispatch(fetchTasks(patient));
-        setTimeout(setCards(), 4000);
-
+        setTimeout(setCards, 4000);
+        // eslint-disable-next-line
     }, [patient]);
 
+    // eslint-disable-next-line
     const setCards = () => {
         setHealth(healthState);
         setMeds(medsState);
@@ -84,7 +74,7 @@ const PatientInfo = () => {
                 <Card data={tasks} icon={faTasks} title='Checks' />
             </Container>
             <Container>
-               <TableInfo />
+                <TableInfo />
             </Container>
         </div>
     );

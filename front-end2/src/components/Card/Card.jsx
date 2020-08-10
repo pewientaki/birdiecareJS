@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Container, Body, Title, Text, Button, Header, Date } from './cardStyles';
+import { Container, Body, Text, Button, Header, Date } from './cardStyles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { setTable } from '../../store/actions';
 import moment from 'moment';
@@ -9,14 +9,10 @@ const Card = props => {
 
     const dispatch = useDispatch();
     const [info, setInfo] = useState({ data: [] });
-    const timer = () => {
-        setTimeout(() => { setInfo(props.data) }, 5000)
-        console.log('timer')
-    }
 
     useEffect(() => {
-        console.log(info.data);
-        timer();
+        // console.log(info.data);
+        setTimeout(() => { setInfo(props.data) }, 5000);
     }, [props]);
 
     if (info.data && info.data.length > 0) {
